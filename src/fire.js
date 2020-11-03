@@ -1,16 +1,20 @@
-import firebase from "firebase";
-import "firebase/firestore";
+import firebase from "firebase/app";
+// import firestore from "firebase/firestore"
+import "firebase/auth";
 
-const config = {
-  apiKey: "AIzaSyD5Z-CQcGNPu8l88bhrASwrUHe5DW3RUDA",
-  authDomain: "evernote-clone-3a904.firebaseapp.com",
-  databaseURL: "https://evernote-clone-3a904.firebaseio.com",
-  projectId: "evernote-clone-3a904",
-  storageBucket: "evernote-clone-3a904.appspot.com",
-  messagingSenderId: "133127183261",
-  appId: "1:133127183261:web:8ef5b9a4a4b86598082d74",
-};
+ //enter your firebase api keys
 
-const fire = firebase.initializeApp(config);
+const app = firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSANGING_SENDER_ID,
+  appId:  process.env.REACT_APP_FIREBASE_APP_ID
+})
 
-export default fire;
+// export const db = app.firestore() 
+export const auth = app.auth();
+
+export default app;
